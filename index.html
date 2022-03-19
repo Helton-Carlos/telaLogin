@@ -23,7 +23,7 @@
                 <input type="search" class="form-control" placeholder="Procurar..." aria-label="Search">
               </form>
               <div class="text-end col-12 col-lg-auto mb-2 mb-lg-0 me-lg-aut">
-              <a href="login.html" class="btn" style="background-color: #d10f0f;">Sair</a>  
+              <a href="login.html" class="btn" style="background-color: #d10f0f;" id="limparLocalStorage">Sair</a>  
               </div>
               <div class="text-end col-12 col-lg-auto mb-2 mb-lg-0 me-lg-aut">
                 <a href="cadastrar.html" class="btn btn-mobile" style="background-color: #064fc5">Cadastrar</a>  
@@ -56,6 +56,10 @@
 </div>
 </div>
     <script>
+    document.querySelector("#limparLocalStorage").addEventListener('click',()=>{
+      localStorage.clear();
+    })
+     
     //window.onload = initPage;
     //function initPage(){}
     </script>
