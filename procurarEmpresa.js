@@ -1,15 +1,24 @@
 document.querySelector("#bntEnviar").addEventListener("click", (e) => {
   let pedido = document.querySelector("#pedido").value;
   let empresa = document.querySelector("#empresa").value;
-  let nota = document.querySelector("#nota").value;
+  let nf = document.querySelector("#nota").value;
   let status = document.querySelector("#status").value;
   if (!empresa || !nota || !status || !pedido) {
     alert("Preencha todos os campos*");
   } else {
-    const objEmpresa = { empresa, nota, status, pedido };
-    const local = localStorage.local ? JSON.parse(localStorage.local) : [];
-    local.push(objEmpresa);
-    localStorage.local = JSON.stringify(local);
+    fetch("http://localhost:3000/api/cadastrar-notas", {
+      method: 'POST',
+       body: JSON.stringify({
+        pedido,
+        nf,
+        empresa,
+        status
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    }).then((response) => response.json())
+    .then((json) => console.log(json));
     document.querySelector("#empresa").value = "";
     document.querySelector("#nota").value = "";
     document.querySelector("#status").value = "";
@@ -18,5 +27,5 @@ document.querySelector("#bntEnviar").addEventListener("click", (e) => {
 });
 
 function goBack() {
-  window.history.back();
+  window.location.href = "index.html";
 }
