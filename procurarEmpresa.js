@@ -1,7 +1,7 @@
 document.querySelector("#bntEnviar").addEventListener("click", (e) => {
   let pedido = document.querySelector("#pedido").value;
-  let empresa = document.querySelector("#empresa").value;
   let nf = document.querySelector("#nota").value;
+  let empresa = document.querySelector("#empresa").value;
   let status = document.querySelector("#status").value;
   if (!empresa || !nota || !status || !pedido) {
     alert("Preencha todos os campos*");
@@ -18,10 +18,7 @@ document.querySelector("#bntEnviar").addEventListener("click", (e) => {
         'Content-type': 'application/json; charset=UTF-8',
       },
     }).then((response) => response.json())
-    .then((json) => console.log(json));
-    document.querySelector("#empresa").value = "";
-    document.querySelector("#nota").value = "";
-    document.querySelector("#status").value = "";
+    .then((json) => json);
     window.location.href = "index.html";
   }
 });

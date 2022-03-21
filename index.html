@@ -19,9 +19,9 @@
     <header>
         <div  class="navbar navbar-expand navbar-dark bg-dark">
             <div class="container d-flex flex-wrap justify-content-center">
-              <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto">
+              <!--<form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto">
                 <input type="search" class="form-control" placeholder="Procurar..." aria-label="Search">
-              </form>
+              </form>-->
               <div class="text-end col-12 col-lg-auto mb-2 mb-lg-0 me-lg-aut">
               <a href="login.html" class="btn" style="background-color: #d10f0f;" id="limparLocalStorage">Sair</a>  
               </div>
@@ -43,12 +43,6 @@
             </tr>
           </thead>
           <tbody id="tabela">
-            <tr>
-              <td id="empresas">this.teste</td>
-              <td id="empresas">this.teste</td>
-              <td id="empresas">this.teste</td>
-              <td id="empresas">this.teste</td>
-            </tr>
           </tbody>
         </table>
       </div>
@@ -59,7 +53,26 @@
     document.querySelector("#limparLocalStorage").addEventListener('click',()=>{
       localStorage.clear();
     })
-  
+    function objItem(login){
+    for(let i= 0; i<login.length;i++){
+      //console.log(login)
+      const row = document.createElement("tr")
+      row.innerHTML=`
+      <td>${login[i].pedido}</td>
+      <td>${login[i].nf}</td>
+      <td>${login[i].empresa}</td>
+      <td>${login[i].status}</td>
+      `
+      document.querySelector("#tabela").appendChild(row)
+    }
+ 
+    }
+    fetch("http://localhost:3000/api/notas")
+          .then((r) => r.json())
+          .then((usuarios) => {
+            const login = usuarios.result;
+            this.objItem(login)})
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
