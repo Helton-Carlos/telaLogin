@@ -1,4 +1,5 @@
 (function () {
+  
   document.querySelector(".login").addEventListener("click", function () {
     let email = document.querySelector("#email").value;
     let senha = document.querySelector("#senha").value;

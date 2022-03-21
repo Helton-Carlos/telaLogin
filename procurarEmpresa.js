@@ -26,3 +26,9 @@ document.querySelector("#bntEnviar").addEventListener("click", (e) => {
 function goBack() {
   window.location.href = "index.html";
 }
+function carregarPagina() {
+  var objLocal =  JSON.parse(localStorage.getItem('obj'))
+  if(objLocal=== null){
+      document.location.href ="login.html"
+    }
+}
